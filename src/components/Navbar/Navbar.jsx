@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AppBar, Typography, Button, Avatar, Toolbar } from "@material-ui/core";
 import useStyles from "./styles";
-import memories from "../../images/memories.png";
+import memoriesLogo from "../../images/memories.png";
+import memoriesText from "../../images/memories-text.png";
 import { useDispatch } from "react-redux";
 import { jwtDecode } from "jwt-decode";
 
@@ -12,7 +13,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  console.log(user);
+  // console.log(user);
   // const user = null;
   const logout = () => {
     dispatch({ type: "LOGOUT" });
@@ -33,24 +34,16 @@ const Navbar = () => {
 
   return (
     <AppBar position="static" color="inherit" className={classes.appBar}>
-      <div className={classes.brandContainer}>
-        {" "}
-        <Typography
-          component={Link}
-          to="/"
-          className={classes.heading}
-          variant="h2"
-          align="center"
-        >
-          Memories
-        </Typography>
+      <Link to="/" className={classes.brandContainer}>
+        <img src={memoriesText} alt="icon" height="55" />
         <img
           className={classes.image}
-          src={memories}
+          src={memoriesLogo}
           alt="memories"
-          height="60"
+          height="45"
+          style={{ marginLeft: "-2px" }}
         />
-      </div>
+      </Link>
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>
