@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-
+import CommentSection from "./CommentSection";
 import {
   Paper,
   Typography,
   CircularProgress,
   Divider,
 } from "@material-ui/core";
-
 import { getPost, getPostsBySearch } from "../../actions/posts";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
@@ -75,9 +74,7 @@ const PostDetails = () => {
             <strong>Realtime Chat - coming soon!</strong>
           </Typography>
           <Divider style={{ margin: "20px 0" }} />
-          <Typography variant="body1">
-            <strong>Comments - coming soon!</strong>
-          </Typography>
+          <CommentSection post={post} />
           <Divider style={{ margin: "20px 0" }} />
         </div>
         <div className={classes.imageSection}>
